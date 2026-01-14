@@ -1,0 +1,91 @@
+/* --- ESTILO FORMAL Y MINIMALISTA PARA EL FORMULARIO --- */
+
+.new-contact-form {
+    background-color: #ffffff;
+    padding: 24px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Sombra igual a tu lista */
+    max-width: 400px;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.new-contact-form h2 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #1a1a1a;
+    letter-spacing: -0.5px;
+}
+
+/* Contenedores de inputs para orden vertical */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.new-contact-form label {
+    font-size: 13px;
+    font-weight: 500;
+    color: #666666; /* Mismo color que el teléfono en tu item */
+}
+
+.new-contact-form input {
+    padding: 10px 12px;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 15px;
+    color: #1a1a1a;
+    background-color: #f9f9f9; /* Fondo muy suave */
+    transition: all 0.2s ease;
+}
+
+.new-contact-form input:focus {
+    outline: none;
+    border-color: #000000; /* Negro puro para foco formal */
+    background-color: #ffffff;
+}
+
+/* Botones con estilo sobrio */
+.button-container {
+    display: flex;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.new-contact-form button {
+    flex: 1;
+    padding: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+}
+
+/* Botón Guardar (Principal) */
+button[type="submit"] {
+    background-color: #1a1a1a;
+    color: #ffffff;
+}
+
+button[type="submit"]:hover {
+    background-color: #333333;
+}
+
+/* Botón Cancelar (Secundario) */
+button[type="button"] {
+    background-color: #ffffff;
+    color: #666666;
+    border: 1px solid #e0e0e0;
+}
+
+button[type="button"]:hover {
+    background-color: #f0f0f0;
+    color: #1a1a1a;
+}
