@@ -1,6 +1,8 @@
 import { Button } from "./components/common/button/Button.js";
 import { Contactos } from "./components/secctions/contactos/Contactos.js";
 import { ContactoForm } from "./components/secctions/contactosForm/ContactosForm.js";
+import { toDoList } from "./components/secctions/toDoList/toDoList.js";
+import { TareasForm } from "./components/secctions/tareasForm/TareasForm.js";
 //App
 let app = document.getElementById("app");
 
@@ -8,6 +10,8 @@ let app = document.getElementById("app");
 
 let nav = document.getElementById("nav");
 //Agregamos los botones
+
+nav.appendChild(Button("Usuario", "user", "person.svg "));
 
 nav.appendChild(Button(
 "Agenda",
@@ -27,16 +31,42 @@ function(){
     container.appendChild(ContactoForm());
 }
 ))
+nav.appendChild(Button(
+"Tareas por hacer",
+"toDoList","check.svg",
+function(){
+    container.innerHTML = "";
+    container.appendChild(toDoList());
+}
+))
+nav.appendChild(Button(
+    "Nueva Tarea", 
+    "newTask", 
+    "add.svg", 
+    function(){
+        container.innerHTML = "";
+        container.appendChild(TareasForm());
+    }
+))
 
 
-nav.appendChild(Button("Usuario", "user", "person.svg "))
-nav.appendChild(Button("Nuevo", "mas", "add.svg"))
-nav.appendChild(Button("Lista de Tareas", "toDoList", "check.svg "))
 
 //section container
 let container = document.getElementById("container");
 
+async function tareas(){
+    try {
+        let data = await fetch ("https://jsonplaceholder.typicode.com/posts");
+        let r = await data.json();
+        console.log(r);
+    } catch (error) {
+        
+    }
+}
 
+tareas();
+
+console.log("Completado")
 
 //cargar al DOM
 app.appendChild(nav);

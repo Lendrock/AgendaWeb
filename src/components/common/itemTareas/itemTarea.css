@@ -1,0 +1,117 @@
+/* --- ITEM DE TAREA INDIVIDUAL --- */
+.item-tarea {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 20px;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background-color 0.2s ease;
+}
+
+.item-tarea:hover {
+    background-color: #f9f9f9;
+}
+
+.item-tarea:last-child {
+    border-bottom: none;
+}
+
+/* Imagen de la tarea */
+.item-tarea > img {
+    width: 24px;
+    height: 24px;
+    opacity: 0.8;
+}
+
+/* Texto de la tarea (crece para empujar el resto a la derecha) */
+.item-tarea p:nth-child(2) {
+    flex-grow: 1;
+    margin: 0 15px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #1a1a1a;
+}
+
+/* --- ETIQUETAS DE PRIORIDAD (BADGES) --- */
+/* Esta es la etiqueta p que contiene la prioridad */
+.item-tarea p:nth-child(3) {
+    margin: 0 10px;
+    padding: 4px 10px;
+    border-radius: 20px; /* Redondeado total */
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #ffffff; /* Texto blanco para resaltar en el fondo de color */
+    white-space: nowrap;
+}
+
+/* Colores dinámicos basados en el texto */
+/* Si el texto es "Urgencia" */
+.item-tarea p:contains("Urgencia"), 
+.prioridad-urgencia { 
+    background-color: #ef4444; /* Rojo */
+}
+
+/* Si el texto es "Con tiempo" */
+.item-tarea p:contains("Con tiempo"), 
+.prioridad-contiempo { 
+    background-color: #10b981; /* Verde */
+}
+
+/* --- CONTENEDOR DE ACCIONES VERTICAL --- */
+.tarea-acciones {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: center;
+}
+
+.btn-accion-tarea {
+    background: transparent !important;
+    border: none !important;
+    padding: 2px !important;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.btn-accion-tarea:hover {
+    opacity: 0.5;
+}
+
+.btn-accion-tarea img {
+    width: 14px;
+    height: 14px;
+}
+
+/* --- ETIQUETAS DE PRIORIDAD (BADGES) --- */
+.item-tarea p:nth-child(3) {
+    margin: 0 10px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #ffffff !important; /* Forzamos blanco */
+    white-space: nowrap;
+    display: inline-block;
+}
+
+/* Colores basados en la clase que genera el JS */
+.prioridad-urgencia { 
+    background-color: #ef4444 !important; /* Rojo */
+}
+
+.prioridad-contiempo { 
+    background-color: #10b981 !important; /* Verde */
+}
+
+/* --- ESTILO DE TEXTO ELEGANTE --- */
+.item-tarea p:nth-child(2) {
+    flex-grow: 1;
+    margin: 0 15px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #1a1a1a;
+}

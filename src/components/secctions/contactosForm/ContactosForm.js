@@ -1,4 +1,5 @@
 import { ContactList } from "../contactos/db.js";
+import { Contactos } from "../contactos/Contactos.js";
 function ContactoForm(funcion){
 
     let form = document.createElement("form");
@@ -42,6 +43,19 @@ function ContactoForm(funcion){
     let btnCancel = document.createElement("button");
     btnCancel.type = "button"
     btnCancel.textContent = "Cancelar";
+
+    btnCancel.addEventListener("click", () => {
+        if (inputNombre.value !== "" || inputTelefono.value !== "") {
+            inputNombre.value = "";
+            inputTelefono.value = "";
+            console.log("Datos reseteados");
+        }else{
+            let container = document.getElementById("container");
+            container.innerHTML = "";
+            container.appendChild(Contactos());
+            console.log("Formulario cerrado");
+        }
+    });
 
     form.appendChild(labelNombre);
     form.appendChild(inputNombre);

@@ -1,0 +1,50 @@
+/* --- CONTENEDOR PRINCIPAL DE TO-DO LIST --- */
+.toDoList {
+    max-width: 450px;
+    margin: 20px auto;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    overflow: hidden; 
+    font-family: 'Inter', -apple-system, sans-serif;
+    border: 1px solid #eaeaea;
+}
+
+/* Cabecera consistente con Contactos */
+.toDoList-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #fcfcfc;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.toDoList h2 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #111827;
+}
+
+/* Botón "+" minimalista en cabecera */
+.btn-minimalist {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    background-color: #ffffff;
+    transition: all 0.2s ease;
+}
+
+.btn-minimalist:hover {
+    background-color: #f9f9f9;
+    border-color: #cccccc;
+}
+
+.btn-minimalist .button-text {
+    display: none;
+}

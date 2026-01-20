@@ -4,4 +4,13 @@ let ContactList = [
     {nombre: "Pedro", telefono: "132456749"}
 ]
 
-export {ContactList};
+let TaskList = [
+    {tarea: "Comprar pan", prioridad: "Urgencia"},
+    {tarea: "Llamar a mamá", prioridad: "Con tiempo"},
+    {tarea: "Pagar facturas", prioridad: "Urgencia"},
+    {tarea: "Reunión con equipo", prioridad: "Con tiempo"},
+    {tarea: "Ir al gimnasio", prioridad: "Con tiempo"}
+
+]
+
+export {ContactList, TaskList};
