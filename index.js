@@ -1,5 +1,5 @@
 //lammar al login
-import { login } from "./src/components/secctions/contactos/login/Login.js";
+import { login } from "./src/components/secctions/login/Login.js";
 let root = document.getElementById("root");
 
 root.appendChild(login());

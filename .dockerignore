@@ -1,0 +1,14 @@
+touch .dockerignore
+#agrega el nombre de los archivos que requieras
+
+.git
+.gitignore
+Dockerfile
+.dockerignore
+README.md
+LICENSE
+
+node_modules/
+
+*.tmp
+*temp

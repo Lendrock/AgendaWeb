@@ -10,8 +10,6 @@ let ItemTareas = (imgTarea, tarea, prioridad, editar, eliminar) => {
     etiquetaTarea.textContent = tarea;
 
     let etiquetaPrioridad = document.createElement("p");
-    let textoPrioridad = prioridad ? prioridad : "Normal";
-    etiquetaPrioridad.textContent = textoPrioridad;
 
     let claseLimpia = textoPrioridad.toLowerCase().replace(/\s+/g, '');
     etiquetaPrioridad.className = `prioridad-${claseLimpia}`;
