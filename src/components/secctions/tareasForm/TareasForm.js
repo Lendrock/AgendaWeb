@@ -1,16 +1,16 @@
-import {ContactList, TaskList} from "../contactos/db.js";
+import { ContactList, TaskList } from "../contactos/db.js";
 import { toDoList } from "../toDoList/toDoList.js";
-function TareasForm(funcion) {
 
+function TareasForm(taskToEdit = null, index = null) {
     let form = document.createElement("form");
     form.id = "new-tareas-form";
 
-    //Titulo
+    // Titulo
     let title = document.createElement("h2");
     title.textContent = "Nueva Tarea";
     form.appendChild(title);
 
-    //Campo Tarea
+    // Campo Tarea
     let labelTarea = document.createElement("label");
     labelTarea.textContent = "Tarea: ";
     labelTarea.htmlFor = "tarea";
@@ -19,10 +19,10 @@ function TareasForm(funcion) {
     inputTarea.type = "text";
     inputTarea.id = "tarea";
     inputTarea.name = "tarea";
-    inputTarea.required = "true";
+    inputTarea.required = true;
     inputTarea.placeholder = "Ingrese la tarea";
 
-    //Campo Prioridad
+    // Campo Prioridad
     let labelPrioridad = document.createElement("label");
     labelPrioridad.textContent = "Prioridad: ";
     labelPrioridad.htmlFor = "prioridad";
@@ -30,12 +30,12 @@ function TareasForm(funcion) {
     let selecTarea = document.createElement("select");
     selecTarea.id = "prioridad";
     selecTarea.name = "prioridad";
-    selecTarea.required = "true";
+    selecTarea.required = true;
 
     let opciones = [
-        {texto : "Seleccione una opción", valor : ""},
-        {texto : "Con tiempo", valor : "con-tiempo"},
-        {texto : "Urgencia", valor : "urgencia"}
+        { texto: "Seleccione una opción", valor: "" },
+        { texto: "Con tiempo", valor: "con-tiempo" },
+        { texto: "Urgencia", valor: "urgencia" }
     ];
 
     opciones.forEach((opcion) => {
@@ -44,48 +44,68 @@ function TareasForm(funcion) {
         option.value = opcion.valor;
         selecTarea.appendChild(option);
     });
-    let inputPrioridad = selecTarea;
 
-
-
-    //Botones
+    // Botones de acción
     let btnSummit = document.createElement("button");
-    btnSummit.type = "submit"
+    btnSummit.type = "submit";
     btnSummit.textContent = "Guardar";
 
     let btnCancel = document.createElement("button");
-    btnCancel.type = "button"
+    btnCancel.type = "button";
     btnCancel.textContent = "Cancelar";
 
+    // Lógica botón cancelar
     btnCancel.addEventListener("click", () => {
-        if (inputTarea.value !== "" || inputPrioridad.value !== "") {
-            inputTarea.value = "";
-            inputPrioridad.value = "";
-            console.log("Datos reseteados");
-        }else{
-            let container = document.getElementById("container");
+        let hayContenido = inputTarea.value.trim() !== "" || selecTarea.value !== "";
+        let container = document.getElementById("container");
+
+        if (hayContenido) {
+            let confirmarSalida = confirm("Tienes cambios sin guardar. ¿Estás seguro de que quieres salir?");
+            if (confirmarSalida) {
+                container.innerHTML = "";
+                container.appendChild(toDoList());
+            }
+        } else {
             container.innerHTML = "";
             container.appendChild(toDoList());
-            console.log("Formulario cerrado");
         }
     });
 
     form.appendChild(labelTarea);
     form.appendChild(inputTarea);
     form.appendChild(labelPrioridad);
-    form.appendChild(inputPrioridad);
+    form.appendChild(selecTarea);
     form.appendChild(btnSummit);
     form.appendChild(btnCancel);
 
+    // Modo Edición
+    if (taskToEdit) {
+        title.textContent = "Editar Tarea";
+        inputTarea.value = taskToEdit.tarea;
+        selecTarea.value = taskToEdit.prioridad;
+        btnSummit.textContent = "Actualizar";
+    }
+
+    // Evento Submit
     form.addEventListener("submit", (e) => {
         e.preventDefault();
-        let tarea = {
-            tarea: inputTarea.value
+        let nuevaTarea = {
+            tarea: inputTarea.value,
+            prioridad: selecTarea.value
         };
-        console.log(tarea);
-        TaskList.push(tarea);
+
+        if (taskToEdit !== null) {
+            TaskList[index] = nuevaTarea;
+        } else {
+            TaskList.push(nuevaTarea);
+        }
+
+        let container = document.getElementById("container");
+        container.innerHTML = "";
+        container.appendChild(toDoList());
     });
 
     return form;
 }
-export {TareasForm};
+
+export { TareasForm };

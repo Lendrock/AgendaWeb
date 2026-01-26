@@ -1,47 +1,46 @@
 import { Button } from "../button/Button.js";
+
 let ItemTareas = (imgTarea, tarea, prioridad, editar, eliminar) => {
     let div = document.createElement("div");
-    div.className = "item-tarea" ;
+    div.className = "item-tarea";
 
+    // Imagen e información
     let etiquetaImg = document.createElement("img");
     etiquetaImg.src = `./assets/icons/${imgTarea}`;
 
     let etiquetaTarea = document.createElement("p");
     etiquetaTarea.textContent = tarea;
 
+    // Etiqueta de prioridad
     let etiquetaPrioridad = document.createElement("p");
+    etiquetaPrioridad.textContent = prioridad.replace('-', ' ');
+    etiquetaPrioridad.style.textTransform = "capitalize";
 
-    let claseLimpia = textoPrioridad.toLowerCase().replace(/\s+/g, '');
+    let claseLimpia = prioridad.toLowerCase().replace(/[\s-]/g, '');
     etiquetaPrioridad.className = `prioridad-${claseLimpia}`;
 
-    let etiquetaEditar = document.createElement("div");
+    // Apartado: Botones de acción
+    let accionesCont = document.createElement("div");
+    accionesCont.className = "tarea-acciones";
+
     let btnEditarTarea = Button(
         "",
         "editTask",
         "edit.svg",
-        function(){
-            console.log("Editar tarea");
-        }
+        editar
     );
-    etiquetaEditar.appendChild(btnEditarTarea);
-    
-    let etiquetaEliminar = document.createElement("div");
+
     let btnEliminarTarea = Button(
         "",
         "deleteTask",
         "delete.svg",
-        function(){
-            console.log("Eliminar tarea");
-        }
+        eliminar
     );
-    etiquetaEliminar.appendChild(btnEliminarTarea);
-
-    let accionesCont = document.createElement("div");
-    accionesCont.className = "tarea-acciones";
 
     btnEditarTarea.classList.add("btn-accion-tarea");
     btnEliminarTarea.classList.add("btn-accion-tarea");
 
+    // Construcción de item
     div.appendChild(etiquetaImg);
     div.appendChild(etiquetaTarea);
     div.appendChild(etiquetaPrioridad);
@@ -52,4 +51,4 @@ let ItemTareas = (imgTarea, tarea, prioridad, editar, eliminar) => {
     return div;
 }
 
-export {ItemTareas}
+export { ItemTareas };
