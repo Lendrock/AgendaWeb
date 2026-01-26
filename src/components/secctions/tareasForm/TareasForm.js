@@ -1,7 +1,9 @@
-import { ContactList, TaskList } from "../contactos/db.js";
-import { toDoList } from "../toDoList/toDoList.js";
+import { getTasksFromStorage, saveTasksToStorage } from "../../../utils/storage.js";
+import { toDoList } from "../toDoList/ToDoList.js";
 
 function TareasForm(taskToEdit = null, index = null) {
+    let TaskList = getTasksFromStorage();
+
     let form = document.createElement("form");
     form.id = "new-tareas-form";
 
@@ -100,6 +102,9 @@ function TareasForm(taskToEdit = null, index = null) {
             TaskList.push(nuevaTarea);
         }
 
+        // LocalStorage
+        saveTasksToStorage(TaskList);
+
         let container = document.getElementById("container");
         container.innerHTML = "";
         container.appendChild(toDoList());
@@ -107,5 +112,4 @@ function TareasForm(taskToEdit = null, index = null) {
 
     return form;
 }
-
 export { TareasForm };

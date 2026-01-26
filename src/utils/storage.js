@@ -1,4 +1,3 @@
-
 const CONTACTS_KEY = 'agenda_contactos';
 const TASKS_KEY = 'agenda_tareas';
 

@@ -1,6 +1,6 @@
-let login = function(){
-
-    let login= document.createElement("section");
+let login = function(onLogin){
+    let loginContainer = document.createElement("section");
+    loginContainer.className = "login-view"; 
     
     let h3 = document.createElement("h3");
     h3.innerHTML = "Login";
@@ -11,17 +11,20 @@ let login = function(){
 
     let password = document.createElement("input");
     password.type = "password";
-    password.placeholder = "password";
+    password.placeholder = "Password";
 
     let button = document.createElement("button");
     button.innerHTML = "Iniciar Sesion";
-    
 
-    login.appendChild(h3);
-    login.appendChild(user);
-    login.appendChild(password);
-    login.appendChild(button);
+    button.addEventListener("click", function () {
+    window.location.href = "src/app.html";
+});
+
+    loginContainer.appendChild(h3);
+    loginContainer.appendChild(user);
+    loginContainer.appendChild(password);
+    loginContainer.appendChild(button);
     
-    return login;
+    return loginContainer;
 }
 export {login};

@@ -1,7 +1,10 @@
-import { ContactList } from "../contactos/db.js";
+import { getContactsFromStorage, saveContactsToStorage } from "../../../utils/storage.js";
 import { Contactos } from "../contactos/Contactos.js";
 
 function ContactoForm(contactToEdit = null, index = null) {
+    // Cargamos la lista actual del storage
+    let ContactList = getContactsFromStorage();
+
     let form = document.createElement("form");
     form.className = "new-contact-form";
 
@@ -86,6 +89,9 @@ function ContactoForm(contactToEdit = null, index = null) {
         } else {
             ContactList.push(nuevoContacto);
         }
+
+        // LocalStorage
+        saveContactsToStorage(ContactList);
 
         let container = document.getElementById("container");
         container.innerHTML = "";

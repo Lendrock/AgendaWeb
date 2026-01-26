@@ -1,40 +1,18 @@
 import { ItemContactos } from "../../common/itemContacto/ItemContacto.js";
-import { ContactList } from "./db.js";
+import { getContactsFromStorage, saveContactsToStorage } from "../../../utils/storage.js";
 import { Button } from "../../common/button/Button.js";
 import { ContactoForm } from "../contactosForm/ContactosForm.js";
 import { mostrarConfirmacion } from "../../common/modal/Modal.js";
 
 let Contactos = () => {
+    let ContactList = getContactsFromStorage(); 
+
     let sectionContactos = document.createElement("section");
     sectionContactos.className = "contactos";
 
-    // Cabecera
-    let sectionHeader = document.createElement("div");
-    sectionHeader.className = "contactos-header";
-
-    let h2 = document.createElement("h2");
-    h2.textContent = "Contactos";
-
-    let btnNuevoContacto = Button(
-        "",
-        "newContact",
-        "add.svg",
-        function () {
-            sectionContactos.innerHTML = "";
-            sectionContactos.appendChild(ContactoForm());
-        }
-    );
-    btnNuevoContacto.classList.add("btn-minimalist");
-
-    sectionHeader.appendChild(h2);
-    sectionHeader.appendChild(btnNuevoContacto);
-    sectionContactos.appendChild(sectionHeader);
-
-    // Renderizado de lista
     const renderList = () => {
         sectionContactos.innerHTML = "";
         
-        // Creamos la cabecera de nuevo para asegurar los eventos
         let sectionHeader = document.createElement("div");
         sectionHeader.className = "contactos-header";
 
@@ -66,7 +44,7 @@ let Contactos = () => {
                 contact.nombre,
                 contact.telefono,
 
-                // Apartado: Editar
+                // Editar
                 async function () {
                     const confirmar = await mostrarConfirmacion(`¿Deseas editar a "${contact.nombre}"?`);
                     if (confirmar) {
@@ -75,11 +53,12 @@ let Contactos = () => {
                     }
                 },
 
-                // Apartado: Eliminar
+                // Eliminar
                 async function () {
                     const confirmar = await mostrarConfirmacion(`¿Borrar contacto: "${contact.nombre}"?`);
                     if (confirmar) {
                         ContactList.splice(index, 1);
+                        saveContactsToStorage(ContactList); 
                         renderList();
                     }
                 }

@@ -1,38 +1,31 @@
 import { ItemTareas } from "../../common/itemTareas/ItemTareas.js";
-import { TaskList } from "../contactos/db.js";
+import { getTasksFromStorage, saveTasksToStorage } from "../../../utils/storage.js";
 import { Button } from "../../common/button/Button.js";
 import { TareasForm } from "../tareasForm/TareasForm.js";
 import { mostrarConfirmacion } from "../../common/modal/Modal.js";
 
 let toDoList = () => {
+    let TaskList = getTasksFromStorage();
+
     let sectionToDoList = document.createElement("section");
     sectionToDoList.className = "toDoList";
 
-    // Cabecera
-    let sectionHeader = document.createElement("div");
-    sectionHeader.className = "toDoList-header";
-
-    let btnNuevaTarea = Button(
-        "",
-        "newTask",
-        "add.svg",
-        function () {
-            sectionToDoList.innerHTML = "";
-            sectionToDoList.appendChild(TareasForm());
-        }
-    );
-    btnNuevaTarea.classList.add("btn-minimalist");
-
-    let h2 = document.createElement("h2");
-    h2.textContent = "Lista de Tareas";
-
-    sectionHeader.appendChild(h2);
-    sectionHeader.appendChild(btnNuevaTarea);
-    sectionToDoList.appendChild(sectionHeader);
-
-    // Renderizado de lista
     const renderList = () => {
         sectionToDoList.innerHTML = "";
+
+        // Cabecera 
+        let sectionHeader = document.createElement("div");
+        sectionHeader.className = "toDoList-header";
+        let h2 = document.createElement("h2");
+        h2.textContent = "Lista de Tareas";
+        let btnNuevaTarea = Button("", "newTask", "add.svg", function () {
+            sectionToDoList.innerHTML = "";
+            sectionToDoList.appendChild(TareasForm());
+        });
+        btnNuevaTarea.classList.add("btn-minimalist");
+        sectionHeader.appendChild(h2);
+        sectionHeader.appendChild(btnNuevaTarea);
+        
         sectionToDoList.appendChild(sectionHeader);
 
         // Ordenamiento por prioridad
@@ -41,14 +34,13 @@ let toDoList = () => {
             return orden[a.prioridad] - orden[b.prioridad];
         });
 
-        // Generación de items
         TaskList.forEach((task, index) => {
             sectionToDoList.appendChild(ItemTareas(
                 "task.svg",
                 task.tarea,
                 task.prioridad,
 
-                // Apartado: Editar
+                // Editar
                 async function () {
                     const confirmar = await mostrarConfirmacion(`¿Deseas editar la tarea: "${task.tarea}"?`);
                     if (confirmar) {
@@ -57,11 +49,12 @@ let toDoList = () => {
                     }
                 },
 
-                // Apartado: Eliminar
+                // Eliminar
                 async function () {
                     const confirmar = await mostrarConfirmacion(`¡Cuidado! Vas a borrar: "${task.tarea}".`);
                     if (confirmar) {
                         TaskList.splice(index, 1);
+                        saveTasksToStorage(TaskList); 
                         renderList();
                     }
                 }

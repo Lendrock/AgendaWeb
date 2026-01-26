@@ -1,8 +1,9 @@
 import { Button } from "./components/common/button/Button.js";
 import { Contactos } from "./components/secctions/contactos/Contactos.js";
 import { ContactoForm } from "./components/secctions/contactosForm/ContactosForm.js";
-import { toDoList } from "./components/secctions/toDoList/toDoList.js";
+import { toDoList } from "./components/secctions/toDoList/ToDoList.js";
 import { TareasForm } from "./components/secctions/tareasForm/TareasForm.js";
+import { Usuario } from "./components/secctions/usuario/Usuario.js";
 //App
 let app = document.getElementById("app");
 
@@ -11,7 +12,15 @@ let app = document.getElementById("app");
 let nav = document.getElementById("nav");
 //Agregamos los botones
 
-nav.appendChild(Button("Usuario", "user", "person.svg "));
+nav.appendChild(Button(
+    "Usuario",
+    "user",
+    "person.svg",
+    function(){
+        container.innerHTML = "";
+        container.appendChild(Usuario());
+    }
+));
 
 nav.appendChild(Button(
 "Agenda",

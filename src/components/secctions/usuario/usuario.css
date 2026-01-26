@@ -1,0 +1,86 @@
+/* --- CONTENEDOR PRINCIPAL USUARIO --- */
+.usuario {
+    max-width: 450px;
+    width: 95%;
+    margin: 20px auto;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    border: 1px solid #eaeaea;
+    font-family: 'Inter', sans-serif;
+    overflow: hidden;
+}
+
+/* --- CABECERA --- */
+.usuario-header {
+    padding: 15px 20px;
+    border-bottom: 1px solid #f0f0f0;
+    background: #fcfcfc;
+}
+
+.usuario-header h2 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #111827;
+}
+
+/* --- CARD PERFIL --- */
+.usuario-card {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    align-items: flex-start;
+}
+
+/* --- AVATAR --- */
+.usuario-avatar {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: #f3f4f6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #e5e7eb;
+    flex-shrink: 0;
+}
+
+.usuario-avatar img {
+    width: 42px;
+    height: 42px;
+    opacity: 0.85;
+}
+
+/* --- INFO --- */
+.usuario-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.usuario-info p {
+    margin: 0;
+    font-size: 14px;
+    color: #374151;
+    display: flex;
+    gap: 6px;
+}
+
+.usuario-info strong {
+    font-weight: 600;
+    color: #111827;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 480px) {
+    .usuario-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .usuario-info {
+        align-items: center;
+    }
+}

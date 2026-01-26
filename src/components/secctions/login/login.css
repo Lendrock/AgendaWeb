@@ -1,56 +1,78 @@
-/* Contenedor principal generado por tu función */
+/* Estilo para la sección principal */
 section {
-    background-color: #ffffff;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-    width: 320px;
     display: flex;
     flex-direction: column;
-    gap: 15px;
-    font-family: 'Arial', sans-serif;
-    margin: 20px auto; /* Centrado básico */
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f8f9fa; /* Gris muy claro, casi blanco */
+    font-family: 'Inter', -apple-system, sans-serif;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
-/* Título H3 */
+/* Título Formal */
 h3 {
-    margin: 0 0 10px 0;
-    text-align: center;
-    color: #333;
-    font-size: 24px;
+    color: #1a1a1a;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    letter-spacing: -0.5px;
 }
 
-/* Inputs de texto y password */
-input[type="text"],
-input[type="password"] {
+/* Inputs Minimalistas */
+input {
     width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box; /* Importante para que no se desborden */
-    font-size: 14px;
-    outline: none;
-    transition: border-color 0.3s;
-}
-
-input[type="text"]:focus,
-input[type="password"]:focus {
-    border-color: #007bff;
-}
-
-button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 12px;
-    border-radius: 5px;
-    font-weight: bold;
-    cursor: pointer;
+    max-width: 350px;
+    padding: 14px 16px;
+    margin-bottom: 12px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
     font-size: 16px;
-    transition: background 0.3s;
+    background-color: #ffffff;
+    transition: all 0.2s ease;
+    outline: none;
+    box-sizing: border-box;
+}
+
+input:focus {
+    border-color: #000000; /* Negro sólido para un look minimalista */
+    box-shadow: 0 0 0 1px #000000;
+}
+
+/* Botón Formal */
+button {
+    width: 100%;
+    max-width: 350px;
+    padding: 14px;
     margin-top: 10px;
+    background-color: #1a1a1a; /* Botón negro formal */
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
 }
 
 button:hover {
-    background-color: #0056b3;
+    opacity: 0.9;
+}
+
+/* Ajustes Responsivos */
+@media (max-width: 480px) {
+    section {
+        padding: 40px 20px;
+        justify-content: flex-start; /* En móviles sube un poco el contenido */
+    }
+    
+    h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    input, button {
+        max-width: 100%; /* Ocupa todo el ancho en pantallas pequeñas */
+    }
 }
