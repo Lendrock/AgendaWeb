@@ -1,22 +1,20 @@
-/* --- CONTENEDOR PRINCIPAL DE TO-DO LIST --- */
+/* --- CONTENEDOR PRINCIPAL --- */
 .toDoList {
-    max-width: 450px;
+    max-width: 500px;
     margin: 20px auto;
-    background-color: #ffffff;
+    background: #fff;
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    overflow: hidden; 
-    font-family: 'Inter', -apple-system, sans-serif;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    font-family: 'Inter', sans-serif;
     border: 1px solid #eaeaea;
 }
 
-/* Cabecera consistente con Contactos */
+/* --- CABECERA --- */
 .toDoList-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
-    background-color: #fcfcfc;
+    padding: 15px 20px;
     border-bottom: 1px solid #f0f0f0;
 }
 
@@ -27,90 +25,65 @@
     color: #111827;
 }
 
-/* Botón "+" minimalista en cabecera */
+/* --- BOTÓN AGREGAR --- */
 .btn-minimalist {
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 8px;
+    width: 36px;
+    height: 36px;
     border-radius: 8px;
     border: 1px solid #e0e0e0;
-    background-color: #ffffff;
-    transition: all 0.2s ease;
-}
-
-.btn-minimalist:hover {
-    background-color: #f9f9f9;
-    border-color: #cccccc;
-}
-
-.btn-minimalist .button-text {
-    display: none;
-}
-/* --- MODAL DE CONFIRMACIÓN --- */
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.4); /* Fondo semi-transparente */
+    background: #fff;
     display: flex;
-    justify-content: center;
     align-items: center;
-    z-index: 9999; /* Siempre por encima de todo */
-    backdrop-filter: blur(2px); /* Efecto de desenfoque moderno */
-}
-
-.modal-content {
-    background: #ffffff;
-    padding: 24px;
-    border-radius: 12px;
-    width: 90%;
-    max-width: 350px;
-    text-align: center;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-    font-family: 'Inter', sans-serif;
-}
-
-.modal-content p {
-    margin-bottom: 20px;
-    color: #374151;
-    font-size: 1rem;
-    line-height: 1.5;
-}
-
-.modal-buttons {
-    display: flex;
-    gap: 12px;
     justify-content: center;
+    transition: 0.2s;
 }
 
-/* Estilos de botones del modal */
-.btn-modal {
-    padding: 8px 16px;
-    border-radius: 6px;
-    border: none;
-    cursor: pointer;
+.btn-minimalist:hover { background: #f9f9f9; }
+
+/* --- ITEM TAREA --- */
+.item-tarea {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid #f0f0f0;
+    gap: 12px;
+}
+
+.item-tarea p:nth-child(2) {
+    flex-grow: 1;
+    font-size: 15px;
     font-weight: 500;
-    transition: background 0.2s;
 }
 
-.btn-confirm {
-    background-color: #111827;
-    color: white;
+/* --- BADGES PRIORIDAD --- */
+.item-tarea p:nth-child(3) {
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 10px;
+    font-weight: 800;
+    color: #fff !important;
 }
 
-.btn-confirm:hover {
-    background-color: #374151;
+.prioridad-urgencia { background: #ef4444; }
+.prioridad-contiempo { background: #10b981; }
+
+/* --- ACCIONES (EDITAR/BORRAR) --- */
+.tarea-acciones {
+    display: flex;
+    flex-direction: row; /* Cambio a horizontal */
+    gap: 10px;
 }
 
-.btn-cancel {
-    background-color: #f3f4f6;
-    color: #4b5563;
+.btn-accion-tarea img {
+    width: 20px; /* Tamaño aumentado */
+    height: 20px;
+    filter: grayscale(1); /* Quita fondos grises si los hay */
 }
 
-.btn-cancel:hover {
-    background-color: #e5e7eb;
+/* --- RESPONSIVE --- */
+@media (max-width: 480px) {
+    .toDoList { margin: 10px; }
+    .item-tarea { padding: 12px; flex-wrap: wrap; }
+    .tarea-acciones { width: 100%; justify-content: flex-end; }
 }

@@ -1,7 +1,8 @@
-/* Contenedor principal del botón */
+/* Contenedor principal del botón (Mantenido tu selector #id) */
 #id { 
     display: flex;
     align-items: center;
+    justify-content: center; /* Asegura centrado total */
     background-color: #ffffff;
     border: 1px solid #e0e0e0;
     border-radius: 10px;
@@ -9,15 +10,16 @@
     cursor: pointer;
     transition: all 0.3s ease;
     width: fit-content;
-    gap: 12px; /* Espacio entre imagen y texto */
+    gap: 12px;
     user-select: none;
 }
 
+/* Efectos de interacción */
 #id:hover {
     background-color: #f8f9fa;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     transform: translateY(-2px);
-    border-color: #007bff;
+    border-color: #1a1a1a; /* Cambio a negro para look formal */
 }
 
 #id:active {
@@ -32,6 +34,7 @@
     justify-content: center;
     width: 24px;
     height: 24px;
+    pointer-events: none; /* Evita que la imagen interfiera en el click */
 }
 
 .button-image img {
@@ -43,8 +46,17 @@
 /* Texto del botón */
 .button-text {
     margin: 0;
-    font-family: 'Segoe UI', sans-serif;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
     font-size: 16px;
     font-weight: 500;
     color: #333;
+    pointer-events: none;
+}
+
+/* --- BOTÓN RESPONSIVE --- */
+@media (max-width: 480px) {
+    #id {
+        width: 100%; /* El botón se expande en móviles pequeños */
+        padding: 14px;
+    }
 }

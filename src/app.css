@@ -1,23 +1,100 @@
-*{
+/* --- 1. ESTRUCTURA BASE --- */
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-#app{
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f3f4f6;
+    overflow-x: hidden;
+}
+
+/* --- 2. LAYOUT PRINCIPAL (SIDEBAR + CONTENT) --- */
+#app {
+    display: flex;
     width: 100vw;
+    min-height: 100vh;
+}
+
+#nav {
+    width: 280px;
+    min-width: 280px; /* Evita que el menú se encoja */
     height: 100vh;
+    background-color: #ffffff;
+    border-right: 1px solid #e5e7eb;
+    padding: 20px;
+    position: sticky;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+#container {
+    flex-grow: 1; /* Toma todo el espacio restante */
+    min-width: 0; /* Permite que el contenido se adapte sin romper el flex */
+    padding: 40px 20px; /* Aire suficiente alrededor de las listas */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow-y: auto;
+}
+
+/* --- 3. CONSISTENCIA DE LISTAS (TAREAS Y CONTACTOS) --- */
+.toDoList, .contactos {
+    width: 100%;
+    max-width: 550px; /* Tamaño ideal para que no se vea pequeño */
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    border: 1px solid #eaeaea;
+    overflow: hidden;
+}
+
+/* --- 4. AJUSTE DE ITEMS (ELIMINA EL EFECTO PEGADO) --- */
+.item-tarea, .item-contacto {
+    display: flex;
+    align-items: center;
+    padding: 18px 24px; /* Padding generoso e igual en ambos */
+    border-bottom: 1px solid #f0f0f0;
+    gap: 16px;
+    transition: background-color 0.2s ease;
+}
+
+/* Texto central: crecemos para empujar botones a la derecha */
+.item-tarea p:nth-child(2), .item-contacto .contacto-info {
+    flex-grow: 1;
+    font-size: 16px;
+    font-weight: 500;
+    color: #1a1a1a;
+}
+
+/* --- 5. RESPONSIVE QUERIES --- */
+@media (max-width: 768px) {
+    #nav {
+        width: 220px;
+        min-width: 220px;
+    }
     
-    display: grid;
-    grid-template-columns:300px 1fr;
-    gap: 10px;
+    #container {
+        padding: 20px 10px;
+    }
 }
 
-#nav{
-    height: 100vh;
-    border: 1px solid #000;
-}
+@media (max-width: 480px) {
+    #nav {
+        width: 70px;
+        min-width: 70px;
+        padding: 15px 10px;
+    }
 
-#container{
-    height: 100vh;
-    border: 1px solid #000;
+    #nav .button-text {
+        display: none; /* Solo iconos en el sidebar */
+    }
+
+    .item-tarea, .item-contacto {
+        padding: 15px; /* Reducimos un poco el aire en móviles */
+    }
 }

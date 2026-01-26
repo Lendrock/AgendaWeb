@@ -1,116 +1,105 @@
-/* --- ESTILO FORMAL PARA EL FORMULARIO DE TAREAS --- */
+/* --- ITEM TAREA: CENTRADO DE ICONOS --- */
+.tarea-acciones {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+}
 
-#new-tareas-form {
+.btn-accion-tarea {
+    background: transparent !important;
+    border: none !important;
+    cursor: pointer;
+    /* CENTRADO PERFECTO */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 0 !important; /* Evita que el icono se desplace */
+}
+
+.btn-accion-tarea img {
+    width: 20px; 
+    height: 20px;
+    display: block; /* Elimina espacio fantasma debajo de la imagen */
+}
+
+/* --- FORMULARIO UNIFICADO (TAREAS Y CONTACTOS) --- */
+.new-contact-form, #new-tareas-form {
     background-color: #ffffff;
     padding: 24px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     max-width: 400px;
+    width: 90%; /* Responsive: no choca en móviles */
     margin: 20px auto;
     display: flex;
     flex-direction: column;
-    gap: 16px; 
+    gap: 20px;
     font-family: 'Inter', -apple-system, sans-serif;
-    border: 1px solid #eaeaea;
+    box-sizing: border-box; /* Crucial para el padding */
 }
 
-#new-tareas-form h2 {
-    margin: 0 0 8px 0;
-    font-size: 1.25rem;
+.new-contact-form h2, #new-tareas-form h2 {
+    margin: 0;
+    font-size: 18px;
     font-weight: 600;
-    color: #111827;
+    color: #1a1a1a;
+    letter-spacing: -0.5px;
 }
 
-#new-tareas-form label {
+.new-contact-form label, #new-tareas-form label {
     font-size: 13px;
     font-weight: 500;
     color: #666666;
-    margin-bottom: -8px; 
+    margin-bottom: -12px; /* Pegadito al input como en tu diseño */
 }
 
-/* --- ESTILOS COMPARTIDOS PARA INPUT Y SELECT --- */
-#new-tareas-form input[type="text"],
-#new-tareas-form select {
-    padding: 12px;
+.new-contact-form input, #new-tareas-form input, #new-tareas-form select {
+    padding: 10px 12px;
     border: 1px solid #e0e0e0;
-    border-radius: 8px;
+    border-radius: 6px;
     font-size: 15px;
+    color: #1a1a1a;
     background-color: #f9f9f9;
     transition: all 0.2s ease;
     width: 100%;
     box-sizing: border-box;
-    cursor: pointer;
 }
 
-#new-tareas-form input[type="text"]:focus,
-#new-tareas-form select:focus {
-    outline: none;
-    border-color: #1a1a1a;
-    background-color: #ffffff;
-    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
-}
-
-/* --- LÓGICA DE COLOR PARA EL SELECT (SIMULACIÓN PLACEHOLDER) --- */
-
-/* Se ve gris mientras no se haya seleccionado una opción válida */
-#new-tareas-form select:invalid {
-    color: #a0a0a0;
-}
-
-/* Se ve negro una vez seleccionado un valor */
-#new-tareas-form select:valid {
-    color: #1a1a1a;
-}
-
-/* Estilo para las opciones dentro de la lista */
-#new-tareas-form select option {
-    color: #1a1a1a;
-    background-color: #ffffff;
-}
-
-/* La opción deshabilitada (Seleccione una opción) se ve más clara en la lista */
-#new-tareas-form select option:disabled {
-    color: #cccccc;
-}
-
-/* Flecha personalizada para el select */
-#new-tareas-form select {
-    appearance: none;
-    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-    background-repeat: no-repeat;
-    background-position: right 12px center;
-    background-size: 16px;
-    padding-right: 40px;
-}
-
-/* --- BOTONES --- */
-#new-tareas-form button {
-    padding: 12px;
+/* Estilo de botones del diseño original */
+.new-contact-form button, #new-tareas-form button {
+    width: 100%;
+    padding: 10px;
     font-size: 14px;
     font-weight: 500;
-    border-radius: 8px;
+    border-radius: 6px;
     cursor: pointer;
     transition: all 0.2s ease;
     border: 1px solid transparent;
 }
 
-#new-tareas-form button[type="submit"] {
+button[type="submit"] {
     background-color: #1a1a1a;
     color: #ffffff;
-    margin-top: 8px;
 }
 
-#new-tareas-form button[type="submit"]:hover {
-    background-color: #333333;
-}
-
-#new-tareas-form button[type="button"] {
+button[type="button"] {
     background-color: #ffffff;
     color: #666666;
     border: 1px solid #e0e0e0;
 }
 
-#new-tareas-form button[type="button"]:hover {
-    background-color: #f5f5f5;
-    color: #1a1a1a;
+/* --- MEDIA QUERIES (RESPONSIVE) --- */
+@media (max-width: 480px) {
+    .new-contact-form, #new-tareas-form {
+        padding: 20px;
+        margin: 10px auto;
+    }
+    
+  
+    .item-tarea {
+        padding: 12px 15px;
+    }
 }

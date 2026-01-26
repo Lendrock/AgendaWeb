@@ -1,40 +1,48 @@
 /* --- CONTENEDOR PRINCIPAL DE CONTACTOS --- */
-
 .contactos {
     max-width: 450px;
+    width: 95%; /* Responsive */
     margin: 20px auto;
     background-color: #ffffff;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    overflow: hidden; /* Para que los bordes de los items no sobresalgan */
-    font-family: 'Inter', -apple-system, sans-serif;
+    overflow: hidden;
+    font-family: 'Inter', sans-serif;
     border: 1px solid #eaeaea;
 }
 
-/* Título de la sección */
-.contactos h2 {
-    margin: 0;
-    padding: 20px 16px;
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: #111827;
+/* Cabecera unificada: Título + Botón */
+.contactos-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
     background-color: #fcfcfc;
     border-bottom: 1px solid #f0f0f0;
 }
 
-/* Espaciado interno para la lista de ítems */
-.contactos .item-contacto {
-    /* Esto complementa el CSS anterior para asegurar que se vea bien dentro de la sección */
-    padding-left: 20px;
-    padding-right: 20px;
+.contactos h2 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #111827;
 }
 
-/* Efecto visual para separar la sección del fondo de la página */
-body {
-    background-color: #f3f4f6; /* Un gris muy claro de fondo hace que la tarjeta blanca resalte */
+/* Botón "+" minimalista ajustado */
+.btn-minimalist {
+    width: 36px;
+    height: 36px;
     display: flex;
+    align-items: center;
     justify-content: center;
-    align-items: flex-start;
-    min-height: 100vh;
-    padding-top: 50px;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    background: #fff;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-minimalist:hover {
+    border-color: #1a1a1a;
+    background-color: #f9f9f9;
 }

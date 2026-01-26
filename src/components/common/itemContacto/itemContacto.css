@@ -1,58 +1,62 @@
-/* --- ESTILO FORMAL Y MINIMALISTA PARA ITEM CONTACTOS --- */
-
+/* --- ITEM CONTACTO INDIVIDUAL --- */
 .item-contacto {
     display: flex;
     align-items: center;
-    background-color: #ffffff;
-    padding: 12px 16px;
-    border-bottom: 1px solid #f0f0f0; /* Línea divisoria sutil */
-    transition: background-color 0.2s ease;
-    gap: 16px;
+    padding: 14px 20px;
+    border-bottom: 1px solid #f0f0f0;
+    gap: 15px;
+    transition: background-color 0.2s;
 }
 
-/* Efecto hover elegante */
-.item-contacto:hover {
-    background-color: #f9f9f9;
-    cursor: pointer;
-}
+.item-contacto:hover { background-color: #f9f9f9; }
 
-/* Quitar el borde al último elemento para que se vea más limpio */
-.item-contacto:last-child {
-    border-bottom: none;
-}
-
-/* Imagen/Avatar del contacto */
-.item-contacto img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%; /* Siempre circular en diseño minimalista */
+/* Imagen del contacto */
+.item-contacto > img {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background-color: #e0e0e0;
     object-fit: cover;
-    background-color: #e0e0e0; /* Color de respaldo mientras carga */
 }
 
-/* Nombre del contacto */
-.item-contacto p:nth-child(2) {
-    flex-grow: 1;
-    margin: 0;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+/* Bloque de texto (Nombre y Tel) */
+.contacto-info {
+    flex-grow: 1; /* Esto empuja los botones a la derecha */
+    display: flex;
+    flex-direction: column;
+}
+
+.contacto-nombre {
     font-size: 15px;
-    font-weight: 500;
+    font-weight: 600;
     color: #1a1a1a;
-}
-
-/* Teléfono del contacto */
-.item-contacto p:last-child {
     margin: 0;
-    font-family: 'Inter', sans-serif;
-    font-size: 14px;
-    color: #666666;
-    font-variant-numeric: tabular-nums; /* Mantiene los números alineados */
 }
 
-/* Ajuste opcional: Si quieres que todo el bloque tenga sombra */
-.lista-contenedor {
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    background: white;
+.contacto-telefono {
+    font-size: 13px;
+    color: #666;
+    margin: 0;
+}
+
+/* Contenedor de botones Editar/Eliminar */
+.contacto-acciones {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-accion-contacto {
+    background: transparent !important;
+    border: none !important;
+    padding: 5px !important;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-accion-contacto img {
+    width: 20px;
+    height: 20px;
+    background: transparent !important; /* Quita el fondo gris */
 }
